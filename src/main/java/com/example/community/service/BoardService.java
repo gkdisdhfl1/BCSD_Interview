@@ -34,7 +34,8 @@ public class BoardService {
   }
 
   // 게시글 삭제
-  public void deleteUser(int id) {
+  public void deleteBoard(int id) {
     boardMapper.deleteBoard(id);
   }
+
 }
