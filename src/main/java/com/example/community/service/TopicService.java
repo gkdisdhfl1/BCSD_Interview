@@ -19,7 +19,7 @@ public class TopicService {
     return topicMapper.getAllTopics();
   }
 
-  public Topic getTopicById(int id) {
+  public Topic getTopicById(Long id) {
     return topicMapper.getTopicById(id);
   }
 
@@ -34,7 +34,7 @@ public class TopicService {
   }
 
   // 주제 삭제
-  public void deleteTopic(int id) {
+  public void deleteTopic(Long id) {
     topicMapper.deleteTopic(id);
   }
 }

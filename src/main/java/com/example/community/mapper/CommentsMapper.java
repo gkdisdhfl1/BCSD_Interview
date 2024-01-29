@@ -7,8 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface CommentsMapper {
   List<Comments> getAllComments();
-  Comments getComment(int id);
-  void writeComment(Comments comments);
-  void editComment(Comments comments);
-  void deleteComment(int id);
+  Comments getCommentById(Long id);
+  void insertComment(Comments comments);
+  void updateComment(Comments comments);
+  void deleteComment(Long id);
 }

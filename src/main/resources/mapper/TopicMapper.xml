@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.community.mapper.TopicMapper">
+  <resultMap id="TopicResultMap" type="com.example.community.domain.Topic">
+    
+  </resultMap>
+  
+  <select id="getAllTopics" resultMap="TopicResultMap">
+    SELECT * FROM topic;
+  </select>
+
+  <select id="getTopicById" resultMap="TopicResultMap" parameterType="Long">
+    SELECT * FROM topic WHERE id = #{id};
+  </select>
+
+  <insert id="insertTopic" parameterType="com.example.community.domain.Topic">
+    INSERT INTO topic (name) VALUES (#{name});
+  </insert>
+
+  <update id="updateTopic" parameterType="com.example.community.domain.Topic">
+    UPDATE topic SET name = #{name} WHERE id = #{id};
+  </update>
+
+  <delete id="deleteTopic" parameterType="Long">
+    DELETE FROM topic WHERE id = #{id};
+  </delete>
+</mapper>

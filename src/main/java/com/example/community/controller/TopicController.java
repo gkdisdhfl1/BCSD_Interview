@@ -22,7 +22,7 @@ public class TopicController {
   }
 
   @GetMapping("/{id}")
-  public Topic getTopicById(@PathVariable int id) {
+  public Topic getTopicById(@PathVariable Long id) {
     return topicService.getTopicById(id);
   }
 
@@ -32,7 +32,7 @@ public class TopicController {
   }
 
   @DeleteMapping("/{id}")
-  public void deleteTopic(@PathVariable int id) {
+  public void deleteTopic(@PathVariable Long id) {
     topicService.deleteTopic(id);
   }
 }

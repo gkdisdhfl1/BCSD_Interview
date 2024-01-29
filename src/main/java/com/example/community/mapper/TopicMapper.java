@@ -7,8 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface TopicMapper {
   List<Topic> getAllTopics();
-  Topic getTopicById(int id);
+  Topic getTopicById(Long id);
   void insertTopic(Topic topic);
   void updateTopic(Topic topic);
-  void deleteTopic(int id);
+  void deleteTopic(Long id);
 }

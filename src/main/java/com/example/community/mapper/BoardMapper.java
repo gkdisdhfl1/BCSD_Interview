@@ -7,8 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface BoardMapper {
   List<Board> getAllBoards();
-  Board getBoardById(int id);
-  void writeBoard(Board board);
-  void editBoard(Board board);
-  void deleteBoard(int id);
+  Board getBoardById(Long id);
+  void insertBoard(Board board);
+  void updateBoard(Board board);
+  void deleteBoard(Long id);
 }

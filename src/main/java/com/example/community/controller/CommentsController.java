@@ -22,17 +22,17 @@ public class CommentsController {
   }
 
   @GetMapping("/{id}")
-  public Comments getCommentsById(@PathVariable int id) {
+  public Comments getCommentsById(@PathVariable Long id) {
     return commentsService.getCommentsById(id);
   }
 
-  @PutMapping("/update")
-  public void updateComments(@RequestBody Comments comments) {
-    commentsService.updateComments(comments);
+  @PostMapping("/update/{id}")
+  public void updateComments(@PathVariable Long id, Comments comments) {
+    commentsService.updateComments(id, comments.getUserId(), comments.getContent());
   }
 
-  @DeleteMapping("/{id}")
-  public void deleteComments(@PathVariable int id) {
-    commentsService.deleteComments(id);
+  @DeleteMapping("/delete/{id}")
+  public void deleteComments(@PathVariable Long id, Comments comments) {
+    commentsService.deleteComments(id, comments.getUserId());
   }
 }

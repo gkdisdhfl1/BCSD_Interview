@@ -1,12 +1,14 @@
 package com.example.community.domain;
 
+import java.sql.Timestamp;
 import lombok.Data;
 
 @Data
 public class Comments {
-  private int id;
+  private Long id;
   private String content;
-  private User user;
-  private Board board;
-  private Comments parentComment;
+  private Long userId;
+  private Long boardId;
+  private Long parentCommentId;
+  private Timestamp createdAt;
 }

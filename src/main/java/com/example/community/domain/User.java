@@ -4,13 +4,9 @@ import lombok.Data;
 
 @Data
 public class User {
-  private int id;
+  private Long id;
   private String username;
   private String password;
   private String email;
-  private Rule rule;
-}
-
-enum Rule {
-  ADMIN, USER;
+  private String rule;
 }

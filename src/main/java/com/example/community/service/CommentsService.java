@@ -2,6 +2,10 @@ package com.example.community.service;
 
 import com.example.community.domain.Comments;
 import com.example.community.mapper.CommentsMapper;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,22 +25,37 @@ public class CommentsService {
     return commentsMapper.getAllComments();
   }
 
-  public Comments getCommentsById(int id) {
-    return commentsMapper.getComment(id);
+  public Comments getCommentsById(Long id) {
+    return commentsMapper.getCommentById(id);
   }
 
   // 댓글 추가
   public void insertComments(Comments comments) {
-    commentsMapper.writeComment(comments);
+    commentsMapper.insertComment(comments);
   }
 
   // 댓글 수정
-  public void updateComments(Comments comments) {
-    commentsMapper.editComment(comments);
+  public void updateComments(Long id, Long userId, String content) {
+    Comments comments = commentsMapper.getCommentById(id);
+    if(!comments.getUserId().equals(userId)) {
+      return;
+    }
+
+    // 내용 수정
+    comments.setContent(content);
+
+    // 시간 갱신
+    comments.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+    commentsMapper.updateComment(comments);
   }
 
   // 댓글 삭제
-  public void deleteComments(int id) {
+  public void deleteComments(Long id, Long userId) {
+    Comments comments = commentsMapper.getCommentById(id);
+    if(!comments.getUserId().equals(userId)) {
+      return;
+    }
+
     commentsMapper.deleteComment(id);
   }
 }

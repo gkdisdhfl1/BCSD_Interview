@@ -3,6 +3,7 @@ package com.example.community.service;
 import com.example.community.domain.User;
 import com.example.community.mapper.UserMapper;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class UserService {
     return userMapper.getAllUsers();
   }
 
-  public User getUserById(int id) {
+  public User getUserById(Long id) {
     return userMapper.getUserById(id);
   }
 
@@ -34,7 +35,7 @@ public class UserService {
   }
 
   // 유저 삭제
-  public void deleteUser(int id) {
+  public void deleteUser(Long id) {
     userMapper.deleteUser(id);
   }
 }

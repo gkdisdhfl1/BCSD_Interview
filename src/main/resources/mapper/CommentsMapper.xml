@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.community.mapper.CommentsMapper">
+  <resultMap id="CommentsResultMap" type="com.example.community.domain.Comments">
+
+  </resultMap>
+
+  <select id="getAllComments" resultMap="CommentsResultMap">
+    SELECT * FROM comments;
+  </select>
+
+  <select id="getCommentById" resultMap="CommentsResultMap" parameterType="Long">
+    SELECT * FROM comments WHERE id = #{id};
+  </select>
+
+  <insert id="insertComment" parameterType="com.example.community.domain.Comments">
+    INSERT INTO comments (content, user_id, board_id, parent_comment_id)
+    VALUES (#{content}, #{userId}, #{boardId}, #{parentCommentId});
+  </insert>
+  
+  <update id="updateComment" parameterType="com.example.community.domain.Comments">
+    UPDATE comments SET
+    content = #{content},
+    user_id = #{user_id},
+    board_id = #{board_id},
+    parent_comment_id = #{parentCommentId},
+    WHERE id = #{id};
+  </update>
+
+  <delete id="deleteComment" parameterType="Long">
+    DELETE FROM comments WHERE id = #{id};
+  </delete>
+
+
+</mapper>
