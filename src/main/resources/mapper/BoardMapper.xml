@@ -31,4 +31,8 @@
   <delete id="deleteBoard" parameterType="Long">
     DELETE FROM board WHERE id = #{id};
   </delete>
+
+  <select id="getBoardsByTopicId" resultType="Board">
+    SELECT * FROM board WHERE topic_id = #{topicId}
+  </select>
 </mapper>

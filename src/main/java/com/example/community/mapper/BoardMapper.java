@@ -11,4 +11,5 @@ public interface BoardMapper {
   void insertBoard(Board board);
   void updateBoard(Board board);
   void deleteBoard(Long id);
+  List<Board> getAllBoardsByTopicId(Long topicId);
 }

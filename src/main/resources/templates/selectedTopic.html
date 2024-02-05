@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selected Topic Page</title>
+</head>
+
+<body>
+
+<!-- 선택한 주제에 속하는 게시글 목록 표시 -->
+<table>
+  <thead>
+  <tr>
+    <th>Board ID</th>
+    <th>Title</th>
+    <th>Date</th>
+    <th>Action</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="board : ${selectedTopic}">
+    <td th:text="${board.id}">1</td>
+    <td th:text="${board.title}">Board 1</td>
+    <td th:text="${board.getCreatedAt()}"></td>
+
+    <td><a th:href="@{/topics/{topicId}/boards/{boardId}(topicId=${selectedTopic.id}, boardId=${board.id})}">Read</a></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+
+</html>

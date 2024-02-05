@@ -55,4 +55,8 @@ public class BoardService {
     boardMapper.deleteBoard(id);
   }
 
+  public List<Board> getAllBoardsByTopicId(Long topicId) {
+    return boardMapper.getAllBoardsByTopicId(topicId);
+  }
+
 }
