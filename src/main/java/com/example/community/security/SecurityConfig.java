@@ -1,38 +1,45 @@
 package com.example.community.security;
 
-import com.example.community.service.UserService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-public class SecurityConfig {
-  @Configuration
-  @EnableWebSecurity
-  @RequiredArgsConstructor
-  public class SecurityConfig {
-
-    private final UserService userService;
-    private static String secretKey = "secret-key-123123";
-
-
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-      return httpSecurity
-          .httpBasic().disable()
-          .csrf().disable()
-          .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-          .and()
-          .addFilterBefore(new JwtTokenFilter(userService, secretKey), UsernamePasswordAuthenticationFilter.class)
-          .authorizeRequests()
-          .antMatchers("/jwt-login/info").authenticated()
-          .antMatchers("/jwt-login/admin/**").hasAuthority("ADMIN")
-          .and().build();
-    }
-    j
-  }
-}
+//@Configuration
+//@EnableWebSecurity
+//public class SecurityConfig extends WebSecurityConfigurerAdapter {
+//  private final UserDetailsService userDetailsService;
+//  private final JwtTokenProvider jwtTokenProvider;
+//
+//  @Autowired
+//  public SecurityConfig(UserDetailsService userDetailsService, JwtTokenProvider jwtTokenProvider) {
+//    this.userDetailsService = userDetailsService;
+//    this.jwtTokenProvider = jwtTokenProvider;
+//  }
+//
+//  @Bean
+//  public PasswordEncoder passwordEncoder() {
+//    return new BCryptPasswordEncoder();
+//  }
+//
+//  @Override
+//  @Bean
+//  public AuthenticationManager authenticationManagerBean() throws Exception {
+//    return super.authenticationManagerBean();
+//  }
+//
+//  @Override
+//  protected void configure(HttpSecurity http) throws Exception {
+//    http.csrf().disable()
+//        .authorizeRequests()
+//        .antMatchers("/api/auth/**").permitAll() // 로그인 및 회원가입 엔드포인트
+//        .anyRequest().authenticated()
+//        .and()
+//        .addFilterBefore(new JwtTokenFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
+//  }
+//}

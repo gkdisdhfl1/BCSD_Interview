@@ -3,6 +3,7 @@ package com.example.community.controller;
 import com.example.community.domain.Topic;
 import com.example.community.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,6 +24,7 @@ public class TopicController {
 
   @GetMapping("/{id}")
   public Topic getTopicById(@PathVariable Long id) {
+
     return topicService.getTopicById(id);
   }
 

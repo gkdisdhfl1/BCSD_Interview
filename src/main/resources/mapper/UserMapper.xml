@@ -32,4 +32,8 @@
   <delete id="deleteUser" parameterType="Long">
     DELETE FROM user WHERE id = #{id};
   </delete>
+
+  <select id="findByUsername" resultType="com.example.community.domain.User">
+    SELECT * FROM user WHERE username = #{username}
+  </select>
 </mapper>

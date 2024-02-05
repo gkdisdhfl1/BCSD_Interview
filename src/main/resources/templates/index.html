@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Page</title>
+</head>
+
+<body>
+<h1>Welcome to the Main Page</h1>
+
+<!-- 주제 목록을 보여줄 표 -->
+<table>
+  <thead>
+  <tr>
+    <th>Topic ID</th>
+    <th>Topic Name</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="topic : ${topics}">
+    <td th:text="${topic.id}">1</td>
+    <td th:text="${topic.name}">Topic 1</td>
+    <!-- 주제 선택 시 해당 주제로 이동하는 링크 -->
+    <td><a th:href="@{/topics/{id}(id=${topic.id})}">Select</a></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+
+</html>
